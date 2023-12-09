@@ -10,6 +10,9 @@ const groupID2 = '120363186646230726@g.us';
 
 const client = new Client({
     authStrategy: new LocalAuth(),
+    puppeteer: {
+        args: ["--no-sandbox"]
+    }
 });
 
 client.on('qr', (qr) => {
@@ -35,9 +38,13 @@ client.on('message', async (message) => {
                     console.log(`Bot is Checking for Captcha match`);
                     const captchaReceived = message.body.match(/Captcha: (\w+)/);
                     if (captchaReceived) {
-                        const tierReceived = message.body.match(/🪄 \*Tier:\* (\d+(?:\.\d+)?)/);
+                        const tierReceived = message.body.match(/🪄 \*Tier:\* (\w+)/);
                         console.log(tierReceived);
+                        const tierCheck = tierReceived[1]
                         if (captchaReceived && captchaReceived[1]) {
+
+                            if(tierCheck === 'S' || tierCheck == 5 || tierCheck == 6){
+                            
                             console.log(`Captcha received: ${captchaReceived[1]}`);
                             client.sendMessage(
                                 admin,
@@ -57,7 +64,7 @@ client.on('message', async (message) => {
                                 client.sendMessage(admin, 'Someone already claimed');
                             }
                         }
-                    } else {
+                        } } else {
                         console.error('Invalid captcha format');
                     }
                 } else {
