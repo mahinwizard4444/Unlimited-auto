@@ -96,7 +96,7 @@ client.on('message', (message) => {
                     client.sendMessage(admin, 'Bot is Off Sleep Mode.. /turnOn to start claiming');
                 }
             }else if(message.body === '/total'){
-                client.sendMessage(message.from, `Total Cards Collected from Turning on is ${t}`)
+                client.sendMessage(message.from, `Total Cards Collected from Turning on is ${totalCollected}`)
             }
         }
     } catch (error) {
