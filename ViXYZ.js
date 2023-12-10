@@ -8,6 +8,8 @@ const Dealer = '2348163376700@c.us';
 const groupID1 = '120363132061932497@g.us';
 const groupID2 = '120363181774801103@g.us';
 
+console.log(`Made by IG/_IVXYZ`)
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
