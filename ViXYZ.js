@@ -1,12 +1,12 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 
-const admin = '918686883838@c.us';
-const admin2 = '917010892470@c.us';
+const admin = '917736381119@c.us';
+// (incase Needed) const admin2 = '918686883838@c.us';
 const Dealer = '2348163376700@c.us';
 
 const groupID1 = '120363132061932497@g.us';
-const groupID2 = '120363186646230726@g.us';
+const groupID2 = '120363181774801103@g.us';
 
 const client = new Client({
     authStrategy: new LocalAuth(),
@@ -89,6 +89,7 @@ client.on('message', (message) => {
                 isBotEnabled = false;
                 console.log(`Bot is`);
                 client.sendMessage(message.from, 'Bot is now disabled.');
+                  //console.log('made-by-IG/_IVXYZ)
             } else if (message.body === '/status') {
                 if (isBotEnabled) {
                     client.sendMessage(admin, 'Bot is On listening for Captcha');
