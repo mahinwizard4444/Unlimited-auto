@@ -11,7 +11,11 @@ const groupID2 = '120363181774801103@g.us';
 console.log(`Made by IG/_IVXYZ`)
 
 const client = new Client({
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        args: ["--no-sandbox"]
+    }
+               
 });
 
 client.on('qr', (qr) => {
