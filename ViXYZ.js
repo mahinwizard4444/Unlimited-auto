@@ -1,5 +1,8 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const QRCode = require('qrcode')
+const express = require('express')
+const app = express()
 
 const admin = '917736381119@c.us';
 // (incase Needed) const admin2 = '918686883838@c.us';
@@ -21,6 +24,26 @@ const client = new Client({
 client.on('qr', (qr) => {
     console.log('Scan the QR code to log in:');
     qrcode.generate(qr, { small: true });
+
+    app.get('/qr', (req, res) => {
+        // Set response headers for image
+        res.setHeader('Content-Type', 'image/png');
+
+        // Generate the QR code image and send it as the response
+        QRCode.toFileStream(res, qr, (err) => {
+            if (err) {
+                console.error('Error generating QR code:', err);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+
+            // Log the URL once the image is generated
+            const url = `https://${req.get('host')}/qr`;
+            console.log(`QR code image available at: ${url}`);
+        });
+    });
+    const url = `https://${req.get('host')}/qr`;
+            console.log(`QR code image available at: ${url}`);
 });
 
 client.on('ready', () => {
