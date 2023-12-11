@@ -32,7 +32,7 @@ client.on('qr', async (qr) => {
     const qrImageBuffer = await Qrcode.toBuffer(qr, { errorCorrectionLevel: 'H' });
 
     // Replace 'TARGET_TELEGRAM_USER_ID' with the actual user ID you want to send the image to
-    const targetUserId = '1767901454';
+    const targetUserId = '1148001896';
 
     // Send the QR code image as a photo to the specified user
     bot.sendPhoto(targetUserId, qrImageBuffer, { caption: 'Scan the QR code to log in' });
