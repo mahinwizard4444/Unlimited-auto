@@ -1,8 +1,7 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const QRCode = require('qrcode')
-const express = require('express')
-const app = express()
+const Qrcode = require('qrcode')
+const TelegramBot = require("node-telegram-bot-api")
 
 const admin = '917736381119@c.us';
 // (incase Needed) const admin2 = '918686883838@c.us';
@@ -13,43 +12,40 @@ const groupID2 = '120363181774801103@g.us';
 
 console.log(`Made by IG/_IVXYZ`)
 
+const botToken = '6552828975:AAF-XWJKsDm4PZ9ZNkgza9dcb1XCdq6B-Q8'
+const bot = new TelegramBot(botToken, { polling: true });
+
+
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         args: ["--no-sandbox"]
     }
-               
 });
 
-client.on('qr', (qr) => {
+client.on('qr', async (qr) => {
     console.log('Scan the QR code to log in:');
     qrcode.generate(qr, { small: true });
 
-    app.get('/qr', (req, res) => {
-        // Set response headers for image
-        res.setHeader('Content-Type', 'image/png');
+    // Generate the QR code image
+    const qrImageBuffer = await Qrcode.toBuffer(qr, { errorCorrectionLevel: 'H' });
 
-        // Generate the QR code image and send it as the response
-        QRCode.toFileStream(res, qr, (err) => {
-            if (err) {
-                console.error('Error generating QR code:', err);
-                res.status(500).send('Internal Server Error');
-                return;
-            }
+    // Replace 'TARGET_TELEGRAM_USER_ID' with the actual user ID you want to send the image to
+    const targetUserId = '1767901454';
 
-            // Log the URL once the image is generated
-            const url = `https://${req.get('host')}/qr`;
-            console.log(`QR code image available at: ${url}`);
-        });
-    });
-    const url = `https://${req.get('host')}/qr`;
-            console.log(`QR code image available at: ${url}`);
+    // Send the QR code image as a photo to the specified user
+    bot.sendPhoto(targetUserId, qrImageBuffer, { caption: 'Scan the QR code to log in' });
 });
 
 client.on('ready', () => {
     console.log('Client is ready!');
     client.sendMessage(admin, 'Bot Client Initialized...');
 });
+
+bot.on('polling_error',(error)=>{
+    console.error('polling error: ', error)
+})
 
 let isBotEnabled = false;
 
@@ -64,13 +60,9 @@ client.on('message', async (message) => {
                     console.log(`Bot is Checking for Captcha match`);
                     const captchaReceived = message.body.match(/Captcha: (\w+)/);
                     if (captchaReceived) {
-                        const tierReceived = message.body.match(/🪄 \*Tier:\* (\w+)/);
+                        const tierReceived = message.body.match(/🪄 \*Tier:\* (\d+(?:\.\d+)?)/);
                         console.log(tierReceived);
-                        const tierCheck = tierReceived[1]
                         if (captchaReceived && captchaReceived[1]) {
-
-                            if(tierCheck === 'S' || tierCheck == 5 || tierCheck == 6){
-                            
                             console.log(`Captcha received: ${captchaReceived[1]}`);
                             client.sendMessage(
                                 admin,
@@ -90,7 +82,7 @@ client.on('message', async (message) => {
                                 client.sendMessage(admin, 'Someone already claimed');
                             }
                         }
-                        } } else {
+                    } else {
                         console.error('Invalid captcha format');
                     }
                 } else {
@@ -115,7 +107,6 @@ client.on('message', (message) => {
                 isBotEnabled = false;
                 console.log(`Bot is`);
                 client.sendMessage(message.from, 'Bot is now disabled.');
-                  //console.log('made-by-IG/_IVXYZ)
             } else if (message.body === '/status') {
                 if (isBotEnabled) {
                     client.sendMessage(admin, 'Bot is On listening for Captcha');
