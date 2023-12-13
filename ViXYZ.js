@@ -51,6 +51,15 @@ let isBotEnabled = false;
 
 let totalCollected = 0
 
+client.on('ready', () => {
+    console.log('Client is ready!');
+    client.sendMessage(admin, 'Bot Client Initialized...');
+});
+
+let isBotEnabled = false;
+
+let totalCollected = 0
+
 client.on('message', async (message) => {
     try {
         if (message.from === groupID1 || message.from === groupID2) {
@@ -60,18 +69,20 @@ client.on('message', async (message) => {
                     console.log(`Bot is Checking for Captcha match`);
                     const captchaReceived = message.body.match(/Captcha: (\w+)/);
                     if (captchaReceived) {
-                        const tierReceived = message.body.match(/🪄 \*Tier:\* (\d+(?:\.\d+)?)/);
-                        console.log(tierReceived);
+                        const tierReceived = message.body.match(/🪄 \*Tier:\* (\w+)/);
+                        console.log(tierReceived)
+                        const tierCheck = tierReceived[1];
                         if (captchaReceived && captchaReceived[1]) {
-                            console.log(`Captcha received: ${captchaReceived[1]}`);
-                            client.sendMessage(
-                                admin,
-                                `Card sent by Dealer [Captcha:${captchaReceived[1]} , Tier:${tierReceived[1]} ]`
-                            );
-                            if (!message.body.match(new RegExp(`#claim ${captchaReceived[1]}`))) {
-                                setTimeout(() => {
-                                    client.sendMessage(message.from, `#claim ${captchaReceived[1]}`);
-                                }, 500);
+                            if(tierCheck === 'S' || tierCheck == 4 || tierCheck == 5){
+                                console.log(`Captcha received: ${captchaReceived[1]}`);
+                                client.sendMessage(
+                                    admin,
+                                    `Card sent by Dealer [Captcha:${captchaReceived[1]} , Tier:${tierReceived[1]} ]`
+                                );
+                                if (!message.body.match(new RegExp(`#claim ${captchaReceived[1]}`))) {
+                                    setTimeout(() => {
+                                        client.sendMessage(message.from, `#claim ${captchaReceived[1]}`);
+                                    }, 500);
 
                                 totalCollected += 1
 
@@ -82,7 +93,7 @@ client.on('message', async (message) => {
                                 client.sendMessage(admin, 'Someone already claimed');
                             }
                         }
-                    } else {
+                    }} else {
                         console.error('Invalid captcha format');
                     }
                 } else {
