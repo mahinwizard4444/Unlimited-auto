@@ -1,11 +1,9 @@
 AUTO CLAIM BOT ..... UNDER WORK
 NOT COMPLETED....
 ## Dᴇᴘᴏʟʏ
-Yᴏᴜ Cᴀɴ Dᴇᴘᴏʟʏ Tʜɪs Rᴇᴘᴏ AɴʏWʜᴇʀᴇ
-
 <a href=https://github.com/TamilanBotsZ/PremiumFilter/blob/Tamilans-Working-Branch/Instruction.pyyy>Follow This Instruction Before Depolying Heroku / Koyeb</a>
 
-<details><summary>Dᴇᴘᴏʟʏ Tᴏ Hᴇʀᴏᴋᴜ {ᴘᴀɪᴅ}</summary>
+<details><summary>Dᴇᴘᴏʟʏ Tᴏ Hᴇʀᴏᴋᴜ {1}</summary>
 <p>
 <br>
 <a href="https://heroku.com/deploy?template=https://github.com/mahinwizard4444/Unlimited-Auto">
@@ -14,7 +12,7 @@ Yᴏᴜ Cᴀɴ Dᴇᴘᴏʟʏ Tʜɪs Rᴇᴘᴏ AɴʏWʜᴇʀᴇ
   </p>
   </details>
 
-<details><summary>Dᴇᴘᴏʟʏ Tᴏ Rᴇɴᴅᴇʀ {ғʀᴇᴇ}</summary>
+<details><summary>Dᴇᴘᴏʟʏ Tᴏ Rᴇɴᴅᴇʀ {2}</summary>
 <p>
 <br>
 <a href="https://dashboard.render.com/select-repo?type=web">
@@ -24,7 +22,7 @@ Yᴏᴜ Cᴀɴ Dᴇᴘᴏʟʏ Tʜɪs Rᴇᴘᴏ AɴʏWʜᴇʀᴇ
   </p>
   <p>
 </details>
-<details><summary>Dᴇᴘᴏʟʏ Tᴏ Kᴏʏᴇʙ {ᴩᴀɪᴅ}</summary>
+<details><summary>Dᴇᴘᴏʟʏ Tᴏ Kᴏʏᴇʙ {3}</summary>
 <p>
 <br>
 <a href="https://app.koyeb.com/deploy?type=git&repository=github.com/mahinwizard4444/Unlimited-Auto&branch=main">
@@ -33,6 +31,6 @@ Yᴏᴜ Cᴀɴ Dᴇᴘᴏʟʏ Tʜɪs Rᴇᴘᴏ AɴʏWʜᴇʀᴇ
   </p>
   <p>
 </details>  
-<details><summary>Dᴇᴘᴏʟʏ Tᴏ Oᴋᴛᴇᴛᴏ {ᴘᴀɪᴅ}</summary>
+<details><summary>Dᴇᴘᴏʟʏ Tᴏ Oᴋᴛᴇᴛᴏ {4}</summary>
 <p>
 <br>
