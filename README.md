@@ -8,7 +8,7 @@ Yᴏᴜ Cᴀɴ Dᴇᴘᴏʟʏ Tʜɪs Rᴇᴘᴏ AɴʏWʜᴇʀᴇ
 <details><summary>Dᴇᴘᴏʟʏ Tᴏ Hᴇʀᴏᴋᴜ {ᴘᴀɪᴅ}</summary>
 <p>
 <br>
-<a href="https://heroku.com/deploy?template=https://github.com/TamilanBotsZ/PremiumFilter">
+<a href="https://heroku.com/deploy?template=https://github.com/mahinwizard4444/Unlimited-Auto">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
   </a>
   </p>
