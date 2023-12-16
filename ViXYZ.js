@@ -56,9 +56,9 @@ client.on('ready', () => {
     client.sendMessage(admin, 'Bot Client Initialized...');
 });
 
-let isBotEnabled = false;
+isBotEnabled = false;
 
-let totalCollected = 0
+totalCollected = 0
 
 client.on('message', async (message) => {
     try {
